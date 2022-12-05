@@ -1,15 +1,17 @@
 package com.abyster.parkingweb;
 
-public class ParkingDto {
+import java.io.Serializable;
 
-    private Integer id;
+public class ParkingDto implements Serializable {
+
+    private String id;
     private String adresse;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

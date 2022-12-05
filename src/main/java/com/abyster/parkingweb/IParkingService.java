@@ -2,6 +2,6 @@ package com.abyster.parkingweb;
 
 public interface IParkingService {
 
-    public ParkingDto createParking(ParkingDto dto);
+    public ParkingDto createParking(ParkingDto dto) throws Exception;
 
 }
