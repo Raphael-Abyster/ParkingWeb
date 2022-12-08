@@ -99,5 +99,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:6.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:6.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:6.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.24" level="project" />
   </component>
 </module>
