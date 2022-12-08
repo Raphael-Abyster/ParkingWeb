@@ -1,17 +1,19 @@
 package com.abyster.parkingweb.controller;
 
+import com.abyster.parkingweb.dto.ParkingDto;
 import com.abyster.parkingweb.dto.TicketDto;
 import com.abyster.parkingweb.service.ITicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.logging.Logger;
 
+@RestController
+@RequestMapping("/Ticket")
 public class TicketController {
 
     Logger logger = Logger.getLogger(TicketController.class.getName());
@@ -27,6 +29,12 @@ public class TicketController {
             return new ResponseEntity<>(dto, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public List<TicketDto> findAllTickets()
+    {
+        return service.findAll();
     }
 
     @GetMapping("/")

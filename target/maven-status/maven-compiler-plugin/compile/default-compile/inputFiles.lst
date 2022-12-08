@@ -1,9 +1,13 @@
-/Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/controller/TicketController.java
-/Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/service/impl/ParkingServiceImpl.java
+/Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/repository/ParkingRepository.java
+/Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/repository/TicketRepository.java
 /Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/service/IParkingService.java
 /Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/controller/ParkingController.java
-/Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/dto/ParkingDto.java
 /Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/ParkingwebApplication.java
-/Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/service/ITicketService.java
 /Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/service/impl/TicketServiceImpl.java
 /Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/dto/TicketDto.java
+/Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/controller/TicketController.java
+/Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/service/impl/ParkingServiceImpl.java
+/Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/model/Ticket.java
+/Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/model/Parking.java
+/Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/dto/ParkingDto.java
+/Users/Raphael/Documents/GitHub/ParkingWeb/src/main/java/com/abyster/parkingweb/service/ITicketService.java

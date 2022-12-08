@@ -1,7 +1,14 @@
 package com.abyster.parkingweb.dto;
 
+import com.abyster.parkingweb.model.Parking;
+import com.abyster.parkingweb.model.Ticket;
+import lombok.Builder;
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
+@Builder
 public class TicketDto {
 
     private String uuid;
@@ -59,6 +66,32 @@ public class TicketDto {
                 ", dateFin=" + dateFin +
                 ", VisRes=" + VisRes +
                 '}';
+    }
+
+    public static TicketDto fromEntity(Ticket ticket) {
+        if (ticket == null) {
+            return null;
+        }
+        return TicketDto.builder()
+                .uuid(ticket.getUuid())
+                .immatriculation(ticket.getImmatriculation())
+                .dateDebut(ticket.getDateDebut())
+                .dateFin(ticket.getDateFin())
+                .VisRes(ticket.isVisRes())
+                .build();
+    }
+
+    public static Ticket toEntity(TicketDto dto) {
+        if (dto == null) {
+            return null;
+        }
+        Ticket ticket = new Ticket();
+        ticket.setUuid(dto.getUuid());
+        ticket.setImmatriculation(dto.getImmatriculation());
+        ticket.setDateDebut(ticket.getDateDebut());
+        ticket.setDateFin(ticket.getDateFin());
+        ticket.setVisRes(ticket.isVisRes());
+        return ticket;
     }
 
 }

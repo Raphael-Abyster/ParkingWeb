@@ -1,13 +1,16 @@
 package com.abyster.parkingweb.controller;
 
+import com.abyster.parkingweb.repository.ParkingRepository;
 import com.abyster.parkingweb.service.IParkingService;
 import com.abyster.parkingweb.dto.ParkingDto;
+import com.abyster.parkingweb.service.impl.ParkingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
@@ -29,7 +32,13 @@ public class ParkingController {
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
-    @GetMapping("/")
+    @GetMapping("/all")
+    public List<ParkingDto> findAllParkings()
+    {
+        return service.findAll();
+    }
+
+    @GetMapping("/status")
     public ResponseEntity<String> status() {
         return new ResponseEntity<>("Running", HttpStatus.OK);
     }
