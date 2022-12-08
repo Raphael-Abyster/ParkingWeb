@@ -1,4 +1,4 @@
-package com.abyster.parkingweb;
+package com.abyster.parkingweb.dto;
 
 import java.io.Serializable;
 

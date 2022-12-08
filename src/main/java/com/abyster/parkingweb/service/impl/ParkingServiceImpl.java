@@ -1,5 +1,7 @@
-package com.abyster.parkingweb;
+package com.abyster.parkingweb.service.impl;
 
+import com.abyster.parkingweb.dto.ParkingDto;
+import com.abyster.parkingweb.service.IParkingService;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;

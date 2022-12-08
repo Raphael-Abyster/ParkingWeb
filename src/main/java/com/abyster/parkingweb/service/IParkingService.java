@@ -1,4 +1,6 @@
-package com.abyster.parkingweb;
+package com.abyster.parkingweb.service;
+
+import com.abyster.parkingweb.dto.ParkingDto;
 
 public interface IParkingService {
 
