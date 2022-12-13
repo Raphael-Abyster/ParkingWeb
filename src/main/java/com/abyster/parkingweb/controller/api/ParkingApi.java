@@ -1,23 +1,23 @@
 package com.abyster.parkingweb.controller.api;
 
 import com.abyster.parkingweb.dto.ParkingDto;
+import com.abyster.parkingweb.dto.TicketDto;
+import com.abyster.parkingweb.model.Parking;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 import static com.abyster.parkingweb.utils.Contants.PARKING_ENDPOINT;
+import static com.abyster.parkingweb.utils.Contants.TICKET_ENDPOINT;
 
 public interface ParkingApi {
 
-    @PostMapping(value = PARKING_ENDPOINT + "/save", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = PARKING_ENDPOINT + "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Enregistrer un parking", notes = "Cette methode permet d'enregistrer un parking", response = ParkingDto.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "L'objet parking cree"),
@@ -40,4 +40,10 @@ public interface ParkingApi {
     })
     List<ParkingDto> findAllParkings();
 
+    @DeleteMapping(value = PARKING_ENDPOINT +"/delete/{idParking}")
+    @ApiOperation(value = "Supprimer un parking", notes = "Cette methode permet de supprimer un parking par son id", response = ParkingDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Le parking a été supprimer"),
+    })
+    void delete(@PathVariable("idParking") Integer id);
 }

@@ -46,4 +46,9 @@ public class TicketController implements TicketApi {
         return new ResponseEntity<>("Running", HttpStatus.OK);
     }
 
+    @Override
+    public void delete(Integer id) {
+        service.delete(id);
+    }
+
 }

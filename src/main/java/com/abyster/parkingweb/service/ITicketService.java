@@ -12,4 +12,6 @@ public interface ITicketService {
 
     TicketDto findById(Integer id);
 
+    void delete(Integer id);
+
 }

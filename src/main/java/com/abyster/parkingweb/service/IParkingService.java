@@ -13,4 +13,6 @@ public interface IParkingService {
 
     ParkingDto findById(Integer id);
 
+    void delete(Integer id);
+
 }

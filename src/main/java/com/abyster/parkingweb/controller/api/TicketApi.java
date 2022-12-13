@@ -8,10 +8,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +17,7 @@ import static com.abyster.parkingweb.utils.Contants.TICKET_ENDPOINT;
 @Api(TICKET_ENDPOINT)
 public interface TicketApi {
 
-    @PostMapping(value = TICKET_ENDPOINT + "/save", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = TICKET_ENDPOINT + "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Enregistrer un ticket", notes = "Cette methode permet d'enregistrer un ticket", response = TicketDto.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "L'objet ticket cree"),
@@ -42,5 +39,12 @@ public interface TicketApi {
             @ApiResponse(code = 200, message = "La liste des articles / Une liste vide"),
     })
     List<TicketDto> findAllTickets();
+
+    @DeleteMapping(value = TICKET_ENDPOINT+"/delete/{idArticle}")
+    @ApiOperation(value = "Supprimer un ticket", notes = "Cette methode permet de supprimer un ticket par son id", response = TicketDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Le ticket a été supprimer"),
+    })
+    void delete(@PathVariable("idTicket") Integer id);
 
 }

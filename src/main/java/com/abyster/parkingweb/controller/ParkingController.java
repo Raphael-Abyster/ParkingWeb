@@ -50,4 +50,9 @@ public class ParkingController implements ParkingApi {
         return new ResponseEntity<>("Running", HttpStatus.OK);
     }
 
+    @Override
+    public void delete(Integer id) {
+        service.delete(id);
+    }
+
 }

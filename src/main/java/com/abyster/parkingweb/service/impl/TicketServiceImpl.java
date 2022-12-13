@@ -53,4 +53,12 @@ public class TicketServiceImpl implements ITicketService {
                         new EntityNotFoundException("Aucune category avec l'id = " + id + "n'a été trouvé dans la base de donnée"));
     }
 
+    @Override
+    public void delete(Integer id) {
+        if (id==null){
+            return;
+        }
+        ticketRepository.deleteById(id);
+    }
+
 }
