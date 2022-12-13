@@ -1,5 +1,6 @@
 package com.abyster.parkingweb.controller;
 
+import com.abyster.parkingweb.controller.api.ParkingApi;
 import com.abyster.parkingweb.dto.TicketDto;
 import com.abyster.parkingweb.repository.ParkingRepository;
 import com.abyster.parkingweb.service.IParkingService;
@@ -16,13 +17,13 @@ import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/Parking")
-public class ParkingController {
+public class ParkingController implements ParkingApi {
 
     Logger logger = Logger.getLogger(ParkingController.class.getName());
     @Autowired
     private IParkingService service;
 
-    @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Override
     public ResponseEntity<ParkingDto> createParking(@RequestBody ParkingDto dto)  {
         logger.info(dto.toString());
         try {
@@ -33,13 +34,13 @@ public class ParkingController {
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
-    @GetMapping("/all")
+    @Override
     public List<ParkingDto> findAllParkings()
     {
         return service.findAll();
     }
 
-    @GetMapping("/id")
+    @Override
     public ParkingDto findById(Integer id) {
         return service.findById(id);
     }
