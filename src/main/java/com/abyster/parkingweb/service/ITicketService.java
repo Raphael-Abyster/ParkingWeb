@@ -10,4 +10,6 @@ public interface ITicketService {
 
     List<TicketDto> findAll();
 
+    TicketDto findById(Integer id);
+
 }

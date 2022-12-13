@@ -1,8 +1,11 @@
 package com.abyster.parkingweb.service.impl;
 
+import ch.qos.logback.core.spi.ErrorCodes;
 import com.abyster.parkingweb.dto.ParkingDto;
+import com.abyster.parkingweb.dto.TicketDto;
 import com.abyster.parkingweb.repository.ParkingRepository;
 import com.abyster.parkingweb.service.IParkingService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,4 +41,16 @@ public class ParkingServiceImpl implements IParkingService {
                 .map(ParkingDto::fromEntity)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public ParkingDto findById(Integer id) {
+        if (id==null){
+            return null;
+        }
+
+        return parkingRepository.findById(id)
+                .map(ParkingDto::fromEntity).orElseThrow(() ->
+                        new EntityNotFoundException("Aucune category avec l'id = " + id + "n'a été trouvé dans la base de donnée"));
+    }
+
 }

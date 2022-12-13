@@ -1,5 +1,6 @@
 package com.abyster.parkingweb.controller;
 
+import com.abyster.parkingweb.dto.TicketDto;
 import com.abyster.parkingweb.repository.ParkingRepository;
 import com.abyster.parkingweb.service.IParkingService;
 import com.abyster.parkingweb.dto.ParkingDto;
@@ -36,6 +37,11 @@ public class ParkingController {
     public List<ParkingDto> findAllParkings()
     {
         return service.findAll();
+    }
+
+    @GetMapping("/id")
+    public ParkingDto findById(Integer id) {
+        return service.findById(id);
     }
 
     @GetMapping("/status")

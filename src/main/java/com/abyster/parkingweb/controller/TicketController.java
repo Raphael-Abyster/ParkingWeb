@@ -37,6 +37,11 @@ public class TicketController {
         return service.findAll();
     }
 
+    @GetMapping("/id")
+    public TicketDto findById(Integer id) {
+        return service.findById(id);
+    }
+
     @GetMapping("/")
     public ResponseEntity<String> status() {
         return new ResponseEntity<>("Running", HttpStatus.OK);
