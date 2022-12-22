@@ -1,12 +1,16 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/parkingweb?createDatabaseIfNotExist=true&userSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password: Orgeval.78
+    url: jdbc:mysql://153.92.220.201:3306/u319455556_training_db?createDatabaseIfNotExist=true&userSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: u319455556_training_rw
+    password: Mysql01#
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database: MYSQL
     show-sql: false
+  hikari:
+    minIdle: 10
+    idle-timeout: 10000
+    maximumPoolSize: 30
 
     # Hibernate DDL Auto (create, create-drop, update)
     hibernate:

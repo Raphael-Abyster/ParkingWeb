@@ -7,6 +7,8 @@ import com.abyster.parkingweb.repository.ParkingRepository;
 import com.abyster.parkingweb.service.IParkingService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,7 +31,7 @@ public class ParkingServiceImpl implements IParkingService {
     @Override
     public ParkingDto createParking(ParkingDto dto) {
         logger.info(dto.toString());
-        dto.setId(UUID.randomUUID().toString());
+        dto.setId(dto.getId());
         dto.setAdresse(dto.getAdresse());
 
         return ParkingDto.fromEntity(parkingRepository.save(ParkingDto.toEntity(dto)));

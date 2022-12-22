@@ -24,6 +24,7 @@ public class ParkingController implements ParkingApi {
     private IParkingService service;
 
     @Override
+    @PostMapping("/create")
     public ResponseEntity<ParkingDto> createParking(@RequestBody ParkingDto dto)  {
         logger.info(dto.toString());
         try {
@@ -35,23 +36,27 @@ public class ParkingController implements ParkingApi {
     }
 
     @Override
+    @RequestMapping(value = "/findall", method = RequestMethod.GET)
     public List<ParkingDto> findAllParkings()
     {
         return service.findAll();
     }
 
     @Override
-    public ParkingDto findById(Integer id) {
+    @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
+    public ParkingDto findById(@PathVariable Integer id) {
         return service.findById(id);
     }
 
-    @GetMapping("/status")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<String> status() {
         return new ResponseEntity<>("Running", HttpStatus.OK);
     }
 
+    //Non fonctionnel, mais pas demandé
     @Override
-    public void delete(Integer id) {
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable Integer id) {
         service.delete(id);
     }
 

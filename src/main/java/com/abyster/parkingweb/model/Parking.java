@@ -18,7 +18,7 @@ public class Parking {
 
     @Id
     @Column(name = "id")
-    private String id;
+    private Integer id;
 
 
     @Column(name = "adresse")

@@ -20,6 +20,7 @@ public class TicketController implements TicketApi {
     private ITicketService service;
 
     @Override
+    @PostMapping("/create")
     public ResponseEntity<TicketDto> createTicket(@RequestBody TicketDto dto)  {
         logger.info(dto.toString());
         try {
@@ -31,22 +32,26 @@ public class TicketController implements TicketApi {
     }
 
     @Override
+    @RequestMapping(value = "/findall", method = RequestMethod.GET)
     public List<TicketDto> findAllTickets()
     {
         return service.findAll();
     }
 
     @Override
-    public TicketDto findById(Integer id) {
-        return service.findById(id);
+    @RequestMapping(value = "/id/{uuid}", method = RequestMethod.GET)
+    public TicketDto findById(@PathVariable Integer uuid) {
+        return service.findById(uuid);
     }
 
-    @GetMapping("/")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<String> status() {
         return new ResponseEntity<>("Running", HttpStatus.OK);
     }
 
+    //Non fonctionnel, mais pas demandé
     @Override
+    @RequestMapping(value = "/delete/{uuid}", method = RequestMethod.DELETE)
     public void delete(Integer id) {
         service.delete(id);
     }
