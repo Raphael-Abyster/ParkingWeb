@@ -1,7 +1,6 @@
 package com.abyster.parkingweb.service;
 
 import com.abyster.parkingweb.dto.ParkingDto;
-import com.abyster.parkingweb.dto.TicketDto;
 
 import java.util.List;
 

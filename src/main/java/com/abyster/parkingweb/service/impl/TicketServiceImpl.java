@@ -26,7 +26,7 @@ public class TicketServiceImpl implements ITicketService {
     @Override
     public TicketDto createTicket(TicketDto dto) {
         logger.info(dto.toString());
-        dto.setUuid(UUID.randomUUID().toString());
+        dto.setUuid(dto.getUuid());
         dto.setImmatriculation(dto.getImmatriculation());
         dto.setDateDebut(dto.getDateDebut());
         dto.setDateFin(dto.getDateFin());

@@ -19,7 +19,7 @@ public class Ticket {
 
     @Id
     @Column(name = "uuid")
-    private String uuid;
+    private Integer uuid;
     @Column(name = "immatriculation")
     private String immatriculation;
     @Column(name = "datedebut")

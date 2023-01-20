@@ -3,6 +3,7 @@ package com.abyster.parkingweb.controller.api;
 import com.abyster.parkingweb.dto.ParkingDto;
 import com.abyster.parkingweb.dto.TicketDto;
 import com.abyster.parkingweb.model.Parking;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -12,9 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.abyster.parkingweb.utils.Contants.PARKING_ENDPOINT;
-import static com.abyster.parkingweb.utils.Contants.TICKET_ENDPOINT;
+import static com.abyster.parkingweb.utils.Contants.*;
 
+@Api("parking")
 public interface ParkingApi {
 
     @PostMapping(value = PARKING_ENDPOINT + "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

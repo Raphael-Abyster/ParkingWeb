@@ -11,11 +11,15 @@ spring:
     minIdle: 10
     idle-timeout: 10000
     maximumPoolSize: 30
+    maxLifetime: 600
 
     # Hibernate DDL Auto (create, create-drop, update)
     hibernate:
       ddl-auto: update
       dialect: org.hibernate.dialect.MySQL5Dialect
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 server:
   port: 8080

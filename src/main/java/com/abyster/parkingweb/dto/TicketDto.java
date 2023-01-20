@@ -1,6 +1,5 @@
 package com.abyster.parkingweb.dto;
 
-import com.abyster.parkingweb.model.Parking;
 import com.abyster.parkingweb.model.Ticket;
 import lombok.Builder;
 import lombok.Data;
@@ -11,17 +10,17 @@ import java.util.Date;
 @Builder
 public class TicketDto {
 
-    private String uuid;
+    private Integer uuid;
     private String immatriculation;
     private Date dateDebut;
     private Date dateFin;
     private boolean VisRes;
 
-    public String getUuid() {
+    public Integer getUuid() {
         return uuid;
     }
 
-    public void setUuid(String uuid) {
+    public void setUuid(Integer uuid) {
         this.uuid = uuid;
     }
 

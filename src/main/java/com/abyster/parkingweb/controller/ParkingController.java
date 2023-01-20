@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
-@RequestMapping("/Parking")
+@RequestMapping("/parking")
 public class ParkingController implements ParkingApi {
 
     Logger logger = Logger.getLogger(ParkingController.class.getName());
@@ -36,19 +36,19 @@ public class ParkingController implements ParkingApi {
     }
 
     @Override
-    @RequestMapping(value = "/findall", method = RequestMethod.GET)
+    @GetMapping(value = "/all")
     public List<ParkingDto> findAllParkings()
     {
         return service.findAll();
     }
 
     @Override
-    @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
-    public ParkingDto findById(@PathVariable Integer id) {
+    @GetMapping(value = "/{id}")
+    public ParkingDto findById(@PathVariable("id") Integer id) {
         return service.findById(id);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(value = "/")
     public ResponseEntity<String> status() {
         return new ResponseEntity<>("Running", HttpStatus.OK);
     }
@@ -56,7 +56,7 @@ public class ParkingController implements ParkingApi {
     //Non fonctionnel, mais pas demandé
     @Override
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable Integer id) {
+    public void delete(@PathVariable("id") Integer id) {
         service.delete(id);
     }
 

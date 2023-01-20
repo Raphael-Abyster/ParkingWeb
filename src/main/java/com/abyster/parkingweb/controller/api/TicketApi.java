@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.abyster.parkingweb.utils.Contants.APP_ROOT;
 import static com.abyster.parkingweb.utils.Contants.TICKET_ENDPOINT;
 
-@Api(TICKET_ENDPOINT)
+@Api("ticket")
 public interface TicketApi {
 
     @PostMapping(value = TICKET_ENDPOINT + "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

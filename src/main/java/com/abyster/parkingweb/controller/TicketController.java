@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
-@RequestMapping("/Ticket")
+@RequestMapping("/ticket")
 public class TicketController implements TicketApi {
 
     Logger logger = Logger.getLogger(TicketController.class.getName());
@@ -32,19 +32,19 @@ public class TicketController implements TicketApi {
     }
 
     @Override
-    @RequestMapping(value = "/findall", method = RequestMethod.GET)
+    @GetMapping(value = "/all")
     public List<TicketDto> findAllTickets()
     {
         return service.findAll();
     }
 
     @Override
-    @RequestMapping(value = "/id/{uuid}", method = RequestMethod.GET)
-    public TicketDto findById(@PathVariable Integer uuid) {
+    @GetMapping(value = "/{uuid}")
+    public TicketDto findById(@PathVariable("uuid") Integer uuid) {
         return service.findById(uuid);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(value = "/")
     public ResponseEntity<String> status() {
         return new ResponseEntity<>("Running", HttpStatus.OK);
     }
@@ -52,8 +52,8 @@ public class TicketController implements TicketApi {
     //Non fonctionnel, mais pas demandé
     @Override
     @RequestMapping(value = "/delete/{uuid}", method = RequestMethod.DELETE)
-    public void delete(Integer id) {
-        service.delete(id);
+    public void delete(@PathVariable("uuid") Integer uuid) {
+        service.delete(uuid);
     }
 
 }
