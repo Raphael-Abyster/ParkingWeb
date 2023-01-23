@@ -1,4 +1,5 @@
 com/abyster/parkingweb/service/ITicketService.class
+com/abyster/parkingweb/controller/api/ParkingApi.class
 com/abyster/parkingweb/dto/TicketDto.class
 com/abyster/parkingweb/service/IParkingService.class
 com/abyster/parkingweb/dto/ParkingDto.class
@@ -8,8 +9,11 @@ com/abyster/parkingweb/service/impl/TicketServiceImpl.class
 com/abyster/parkingweb/service/impl/ParkingServiceImpl.class
 com/abyster/parkingweb/dto/TicketDto$TicketDtoBuilder.class
 com/abyster/parkingweb/repository/ParkingRepository.class
+com/abyster/parkingweb/config/SwaggerConfiguration.class
 com/abyster/parkingweb/controller/ParkingController.class
 com/abyster/parkingweb/repository/TicketRepository.class
 com/abyster/parkingweb/controller/TicketController.class
+com/abyster/parkingweb/utils/Contants.class
 com/abyster/parkingweb/model/Ticket.class
+com/abyster/parkingweb/controller/api/TicketApi.class
 com/abyster/parkingweb/dto/ParkingDto$ParkingDtoBuilder.class

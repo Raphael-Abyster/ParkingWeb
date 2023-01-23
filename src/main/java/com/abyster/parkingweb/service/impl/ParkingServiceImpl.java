@@ -30,7 +30,7 @@ public class ParkingServiceImpl implements IParkingService {
 
     @Override
     public ParkingDto createParking(ParkingDto dto) {
-        logger.info(dto.toString());
+        // logger.info(dto.toString());
         dto.setId(dto.getId());
         dto.setAdresse(dto.getAdresse());
 
