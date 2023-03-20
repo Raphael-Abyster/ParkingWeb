@@ -11,6 +11,10 @@ jobs:
       run: |
         sudo apt-get update 
         sudo apt-get install -y docker.io
+    - name: Install Docker Hub tool
+      run: |
+        chmod +x docker-hub-tool.sh
+        ./docker-hub-tool.sh install
     - name: Deploy using Docker/Metadata Actions 
       uses: docker/metadata-action@v3
       with:
