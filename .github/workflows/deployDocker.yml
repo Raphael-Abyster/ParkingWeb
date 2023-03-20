@@ -18,7 +18,7 @@ jobs:
       - name: Deploy with Metadata Action
         uses: docker/metadata-action@v3
         with:
-          images: gcr.io/${{ secrets.PROJECT_ID }}/parkingwebtest:latest
+          images: docker.io/${{ secrets.DOCKER_USERNAME }}/parkingwebtest:latest
           project-id: ${{ secrets.PROJECT_ID }}
           region: ${{ secrets.REGION }}
           service-name: parkingwebtest
