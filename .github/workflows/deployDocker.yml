@@ -23,9 +23,9 @@ jobs:
         push: true
         tags: raphaeldecastro/parking-web:latest
     - name: Deploy with Metadata Action
-        uses: docker/metadata-action@v3
-        with:
-          images: raphaeldecastro/parking-web:$ {{ github.sha }}
-          project-id: ${{ secrets.PROJECT_ID }}
-          region: ${{ secrets.REGION }}
-          service-name: parkingwebtest-${{ github.sha }}
+      uses: docker/metadata-action@v3
+      with:
+        images: raphaeldecastro/parking-web:$ {{ github.sha }}
+        project-id: ${{ secrets.PROJECT_ID }}
+        region: ${{ secrets.REGION }}
+        service-name: parkingwebtest-${{ github.sha }}
