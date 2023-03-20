@@ -10,7 +10,7 @@ jobs:
     - name: Deploy using Docker/Metadata Actions 
       uses: docker/metadata-action@v3
       with:
-        manifest-list: raphaeldecastro/parking-web:latest
+        images: raphaeldecastro/parking-web:latest
         project-id: ${{ secrets.PROJECT_ID }}
         region: ${{ secrets.REGION }}
         service-name: ubuntuparkingwebtest
