@@ -9,15 +9,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Set up SSH key 
-        run: |
-          eval "$(ssh-agent -s)"
-          echo "${{ secrets.DEPLOY_KEY }}" > deploy_key
-          chmod 600 deploy_key
-          ssh-add deploy_key
       - name : Connexion en SSH
         run : |
-          ssh -o StrictHostKeyChecking=no -p 22 raphael_de_castro@34.155.130.100
+          ssh -i ${{ secrets.DEPLOY_KEY }} -p 22 raphael_de_castro@34.155.130.100
       - name: Install Docker
         run: |
           sudo apt-get -y update 
