@@ -19,5 +19,7 @@ jobs:
           sudo apt-get install -y openssh-server
 
       - name: SSH into remote server and execute commands
+        with: 
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
         run: |
-          ssh -i ${{ secrets.DEPLOY_KEY }} raphael_de_castro@34.155.130.100 "echo 'Deployed via SSH.'"
+          ssh raphael_de_castro@34.155.130.100
