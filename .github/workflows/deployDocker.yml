@@ -38,3 +38,62 @@ jobs:
       - name: Create a container with the pulled image
         run: |
           sudo docker run -d --name parking-web-container -p 3000:3000 parking-web
+
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Install ssh-agent and add the private key to the agent
+      - name: Setup SSH connection
+        run: |
+          eval "$(ssh-agent -s)"
+          ssh-add <(echo "${{ secrets.DEPLOY_KEY }}")
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          ssh-keyscan -t rsa raphael_de_castro@34.155.130.100 >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      # Connect to the server through SSH
+      - name: SSH to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: raphael_de_castro@34.155.130.100
+          username: raphael_de_castro
+          key: ${{ secrets.DEPLOY_KEY }}
+
+      # Install Docker on the remote server (if needed)
+      - name: Install Docker
+        run: |
+          sudo apt-get update && \
+          sudo apt-get install --yes apt-transport-https ca-certificates curl software-properties-common gnupg2 lsb-release && \
+          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && \
+          sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" && \
+          sudo apt-get update && \
+          sudo apt-get install --yes docker-ce docker-ce-cli containerd.io
+
+      # Login to Docker Hub
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # Pull the Docker image from Docker Hub
+      - name: Pull Docker image
+        run: |
+          sudo docker pull parking-web
+
+      # Run the Docker container
+      - name: Run Docker container
+        run: |
+          sudo docker run -d --name parking-web-container -p 3000:3000 parking-web
