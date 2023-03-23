@@ -23,7 +23,7 @@ jobs:
       - name: Configure ssh for known_hosts
         run: ssh-keyscan 34.155.130.100 >> ~/.ssh/known_hosts
 
-            - name: Connect to remote server via SSH
+      - name: Connect to remote server via SSH
         run: |
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/deploy_key raphael_de_castro@34.155.130.100 "echo Connected! ; ls -la"
 
