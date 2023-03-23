@@ -18,8 +18,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y openssh-server
 
-      - name: SSH into remote server and execute commands
+      - name: SSH key
         with: 
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+      - name: SSH login
         run: |
           ssh raphael_de_castro@34.155.130.100
