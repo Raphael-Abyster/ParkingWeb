@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2
       - name : Connexion en SSH
         run : |
-          ssh -i ${{ secrets.DEPLOY_KEY }} -p 22 raphael_de_castro@34.155.130.100
+          ssh -i ${{ secrets.DEPLOY_KEY }} raphael_de_castro@34.155.130.100
       - name: Install Docker
         run: |
           sudo apt-get -y update 
