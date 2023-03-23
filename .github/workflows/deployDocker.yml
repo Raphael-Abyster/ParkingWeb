@@ -14,14 +14,22 @@ jobs:
       # Install ssh-agent and add the private key to the agent
       - name: SSH configure 
         run: |
-          mkdir -p ~/.ssh
-          echo " ${{ secrets.DEPLOY_KEY }}" > deploy_key
-          chmod 600 ~/.ssh
           eval "$(ssh-agent -s)"
-          sudo ssh-add ~/.ssh/deploy_key
+        
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-add ~/.ssh/deploy_key
 
-      - name: Configure ssh for known_hosts
-        run: ssh-keyscan 34.155.130.100 >> ~/.ssh/known_hosts
+      - name : SSH into the server and run commands
+        uses: appleboy/ssh-action@master 
+        with:
+          host: ubuntuparkingwebtest
+          key: ${{ secrets.DEPLOY_KEY }} # Le nom du secret contenant la clé privée SSH
+          username: raphael_de_castro # L'utilisateur qui se connectera via ssh
+          port: 22 # Si vous utilisez un port différent, modifiez-le ici.
+          script: |
+            sudo apt-get -y update
+            sudo apt-get install -y docker.io curl 
 
       - name: Connect to remote server via SSH
         run: |
