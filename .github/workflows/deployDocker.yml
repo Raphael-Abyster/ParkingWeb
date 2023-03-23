@@ -16,9 +16,9 @@ jobs:
         run: |
           eval "$(ssh-agent -s)"
         
-          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-add ~/.ssh/deploy_key
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/deploiUbuntu
+          chmod 600 ~/.ssh/deploiUbuntu
+          ssh-add ~/.ssh/deploiUbuntu
 
       - name : SSH into the server and run commands
         uses: appleboy/ssh-action@master 
