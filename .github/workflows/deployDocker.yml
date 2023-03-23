@@ -9,19 +9,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      # Log into remote server using an SSH key.
-      #
-      # Replace `YOUR_SERVER_IP_ADDRESS` and `22` with the IP address of your remote server
-      # and the port number of your SSH service if different from 22, respectively.
-      #
-      # Replace `id_rsa` with the private key filename if other than default and the secret
-      # name 'DEPLOY_KEY' with the secret name you used above when creating the secret
       - name: Set up SSH key
-        run: |
-          echo "${{ secrets.DEPLOY_KEY }}" > deploy_key
-          chmod 600 deploy_key
-          ssh-add deploy_key
+        uses: webfactory/ssh-agent@v0.5.0
+        with: 
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
       - name : Connexion en SSH
         run : |
           ssh -o StrictHostKeyChecking=no -i deploy_key -p 22 raphael_de_castro@34.155.130.100
