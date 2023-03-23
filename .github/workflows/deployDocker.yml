@@ -15,7 +15,7 @@ jobs:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
       - name : Connexion en SSH
         run : |
-          ssh -o StrictHostKeyChecking=no -i deploy_key -p 22 raphael_de_castro@34.155.130.100
+          ssh -o StrictHostKeyChecking=no -p 22 raphael_de_castro@34.155.130.100
       - name: Install Docker
         run: |
           sudo apt-get -y update 
