@@ -15,7 +15,7 @@ jobs:
       - name: SSH configure 
         run: |
           mkdir -p ~/.ssh
-          echo "$DEPLOY_KEY" > deploy_key
+          echo " ${{ secrets.DEPLOY_KEY }}" > deploy_key
           chmod 600 ~/.ssh
           eval "$(ssh-agent -s)"
           sudo ssh-add ~/.ssh/deploy_key
