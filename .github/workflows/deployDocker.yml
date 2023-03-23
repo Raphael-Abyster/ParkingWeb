@@ -11,23 +11,29 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Install ssh-agent and add the private key to the agent
-      - name: Setup SSH connection
+      - name: Start SSH agent
         run: |
           eval "$(ssh-agent -s)"
-          ssh-add <(echo "${{ secrets.DEPLOY_KEY }}")
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
+
+      # Install ssh-agent and add the private key to the agent
+      - name: SSH configure 
+        run: |
+          echo "$DEPLOY_KEY_NAME" > deploy_key
+          chmod 600 ~/.ssh
+          ssh-add deploy_key
           ssh-keyscan -t rsa raphael_de_castro@34.155.130.100 >> ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
 
       # Connect to the server through SSH
       - name: SSH to server
         uses: appleboy/ssh-action@master
         with:
-          host: raphael_de_castro@34.155.130.100
+          host: $raphael_de_castro@34.155.130.100
           username: raphael_de_castro
           key: ${{ secrets.DEPLOY_KEY }}
+          port: 22
+          script: |
+            echo "Connected to the remote server via SSH"
+
 
       # Install Docker on the remote server (if needed)
       - name: Install Docker
