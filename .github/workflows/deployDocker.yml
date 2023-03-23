@@ -15,7 +15,7 @@ jobs:
       - name: SSH configure 
         run: |
           eval "$(ssh-agent -s)"
-        
+          mkdir -p ~/.ssh/deploiUbuntu
           echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/deploiUbuntu
           chmod 600 ~/.ssh/deploiUbuntu
           ssh-add ~/.ssh/deploiUbuntu
