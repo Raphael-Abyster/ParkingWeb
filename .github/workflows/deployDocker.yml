@@ -21,6 +21,7 @@ jobs:
         uses: ./
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+      - name : Connexion en SSH
         run : |
           ssh -i ${{ secrets.DEPLOY_KEY }} -p 22 raphael_de_castro@34.155.130.100
       - name: Install Docker
