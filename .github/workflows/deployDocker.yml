@@ -45,7 +45,7 @@ jobs:
       # Replace `id_rsa` with the private key filename if other than default and the secret
       # name 'DEPLOY_KEY' with the secret name you used above when creating the secret
       - name: Set up SSH key
-        uses: webfactory/ssh-agent@v0.4.1
+        uses: ./
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
       - name: Install Docker
