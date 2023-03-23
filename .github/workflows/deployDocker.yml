@@ -19,6 +19,7 @@ jobs:
           sudo apt-get install -y openssh-server
 
       - name: SSH key
+        uses: ./
         with: 
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
       - name: SSH login
