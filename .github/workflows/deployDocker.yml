@@ -50,11 +50,11 @@ jobs:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
       - name: Install Docker
         run: |
-         sudo apt-get -y update 
-         sudo apt install -y docker.io
+          sudo apt-get -y update 
+          sudo apt install -y docker.io
       - name: Pull image from docker hub
         run: |
-         sudo docker pull parking-web
+          sudo docker pull parking-web
       - name: Create a container with the pulled image
         run: |
-         sudo docker run -d --name parking-web-container -p 3000:3000 parking-web
+          sudo docker run -d --name parking-web-container -p 3000:3000 parking-web
