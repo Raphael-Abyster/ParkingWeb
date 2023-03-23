@@ -24,7 +24,6 @@ jobs:
         run : |
           ssh -i ${{ secrets.DEPLOY_KEY }} -p 22 raphael_de_castro@34.155.130.100
       - name: Install Docker
-        uses: actions/checkout@v2
         run: |
           sudo apt-get -y update 
           sudo apt install -y docker.io
