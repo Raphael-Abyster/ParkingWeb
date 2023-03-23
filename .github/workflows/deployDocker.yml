@@ -13,6 +13,11 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.0
         with: 
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+      - name: Set up SSH key 2
+        run: |
+          echo "${{ secrets.DEPLOY_KEY }}" > deploy_key
+          chmod 600 deploy_key
+          ssh-add deploy_key
       - name : Connexion en SSH
         run : |
           ssh -o StrictHostKeyChecking=no -p 22 raphael_de_castro@34.155.130.100
