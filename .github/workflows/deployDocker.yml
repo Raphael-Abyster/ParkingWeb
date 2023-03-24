@@ -12,5 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: login
+        env: 
+          ssh-key: ${{secrets.DEPLOY_KEY}}
         run: |
-          ssh -i ${{ secrets.DEPLOY_KEY }} raphael_de_castro@34.155.130.100
+          ssh -i $ssh-key raphael_de_castro@34.155.130.100
