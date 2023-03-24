@@ -15,4 +15,8 @@ jobs:
         env: 
           ssh_key: ${{secrets.DEPLOY_KEY}}
         run: |
-          ssh -i $ssh_key raphael_de_castro@34.155.130.100
+          mkdir ~/parkingweb/.ssh
+          touch deploiUbuntu
+          echo $ssh_key > deploiUbuntu
+
+          ssh -i ~/parkingweb/.ssh/deploiUbuntu raphael_de_castro@34.155.130.100
