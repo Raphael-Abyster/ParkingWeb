@@ -15,7 +15,7 @@ jobs:
         env: 
           ssh_key: ${{secrets.DEPLOY_KEY}}
         run: |
-          sudo mkdir ~/parkingweb/.ssh
+          sudo mkdir /parkingweb/ssh
           touch deploiUbuntu
           echo $ssh_key > deploiUbuntu
       - name: Login
