@@ -1,33 +1,29 @@
-name: SSH Deploy
+name: SSH login
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
-  ssh_deploy:
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest        
+      
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v2
-
-      # Install and start SSH agent
-      - name: Start SSH Agent
+        
+      - name: Load ssh key into ssh-agent
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_auth_sock
         run: |
-          eval "$(ssh-agent -s)"
-          sudo mkdir -p ~/.ssh/
-          sudo chmod 700 /home/raphael_de_castro/.ssh
-          ssh-keyscan 34.155.130.100 >> /home/raphael_de_castro/.ssh/authorized_keys
-          echo "${{ secrets.DEPLOY_KEY }}" > /home/raphael_de_castro/.ssh/deploiUbuntu
-          chmod 600 /home/raphael_de_castro/.ssh/deploiUbuntu
-          ssh-add /home/raphael_de_castro/.ssh/deploiUbuntu
+          printf -- "${{secrets.DEPLOY_KEY}}" > temp-key
+          sudo chmod 400 temp-key
+          eval $(ssh-agent -s)
+          ssh-add temp-key
+          sudo rm -f temp-key
 
-      # SSH into the server
-      - name: SSH into the server
-        uses: appleboy/ssh-action@master
-        with:
-          username: 'raphael_de_castro'
-          host: '34.155.130.100'
-          key: ${{ secrets.DEPLOY_KEY }}
-          port: '22'
+      # Login to the remote server using ssh
+      - name: SSH to remote server
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_auth_sock
+        run: ssh raphael_de_castro@34.155.130.100
