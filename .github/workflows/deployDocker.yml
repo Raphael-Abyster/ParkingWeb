@@ -21,7 +21,8 @@ jobs:
       - name: SSH key
         uses: ./
         with: 
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+          ssh-private-key: |
+            ${{ secrets.DEPLOY_KEY }}
       - name: SSH login
         run: |
           ssh -i ${{ secrets.DEPLOY_KEY }} raphael_de_castro@34.155.130.100
