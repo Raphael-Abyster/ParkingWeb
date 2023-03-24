@@ -11,20 +11,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Create ssh directory
-        run: mkdir -p ~/.ssh
-      - name: Load ssh key into ssh-agent
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_auth_sock
+      - name: login
         run: |
-          printf -- "${{secrets.DEPLOY_KEY}}" > temp-key
-          sudo chmod 400 temp-key
-          eval $(ssh-agent -s)
-          ssh-add temp-key
-          sudo rm -f temp-key
-
-      # Login to the remote server using ssh
-      - name: SSH to remote server
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_auth_sock
-        run: ssh raphael_de_castro@34.155.130.100
+          ssh -i ${{ secrets.DEPLOY_KEY }} raphael_de_castro@34.155.130.100
