@@ -1,33 +1,33 @@
-name: SSH Deploy to Ubuntu
+name: SSH Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  deploy:
-
+  ssh_deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
+      # Install and start SSH agent
+      - name: Start SSH Agent
         run: |
-          sudo apt-get update
-          sudo apt-get install -y openssh-server
-
-      - name: SSH key
-        uses: ./
-        eval: $(ssh-agent -s)
-        with: 
-          ssh-private-key: |
-            ${{ secrets.DEPLOY_KEY }}
-      - run: |
-          ssh -i ${{ secrets.DEPLOY_KEY }} raphael_de_castro@34.155.130.100
+          eval "$(ssh-agent -s)"
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
-      - name: Validation
-        run: |
-          mkdir /raphael_de_castro/Validation.txt
+          ssh-keyscan 34.155.130.100 >> ~/.ssh/known_hosts
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/deploiUbuntu
+          chmod 600 ~/.ssh/id_rsa
+          ssh-add ~/.ssh/id_rsa
+
+      # SSH into the server
+      - name: SSH into the server
+        uses: appleboy/ssh-action@master
+        with:
+          username: 'raphael_de_castro'
+          host: '34.155.130.100'
+          key: ${{ secrets.DEPLOY_KEY }}
+          port: '22'
