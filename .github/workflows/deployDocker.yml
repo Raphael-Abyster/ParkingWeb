@@ -16,7 +16,8 @@ jobs:
       - name: Start SSH Agent
         run: |
           eval "$(ssh-agent -s)"
-          sudo touch -p /home/raphael_de_castro/.ssh/deploiUbuntu
+          cd /home/raphael_de_castro/.ssh/
+          sudo touch deploiUbuntu
           sudo chmod 700 /home/raphael_de_castro/.ssh/deploiUbuntu
           ssh-keyscan 34.155.130.100 >> /home/raphael_de_castro/.ssh/authorized_keys
           echo "${{ secrets.DEPLOY_KEY }}" > /home/raphael_de_castro/.ssh/deploiUbuntu
