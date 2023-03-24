@@ -19,7 +19,7 @@ jobs:
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
           ssh-keyscan 34.155.130.100 >> ~/.ssh/known_hosts
-          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/deploiUbuntu
+          sudo echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/deploiUbuntu
           chmod 600 ~/.ssh/deploiUbuntu
           ssh-add ~/.ssh/deploiUbuntu
 
