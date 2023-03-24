@@ -18,10 +18,10 @@ jobs:
           eval "$(ssh-agent -s)"
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
-          ssh-keyscan 34.155.130.100 >> ~/.ssh/known_hosts
-          sudo echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/deploiUbuntu
-          chmod 600 ~/.ssh/deploiUbuntu
-          ssh-add ~/.ssh/deploiUbuntu
+          ssh-keyscan 34.155.130.100 >> ~/.ssh/authorized_keys
+          echo "${{ secrets.DEPLOY_KEY }}" > /home/raphael_de_castro/.ssh/deploiUbuntu
+          chmod 600 /home/raphael_de_castro/.ssh/deploiUbuntu
+          ssh-add /home/raphael_de_castro/.ssh/deploiUbuntu
 
       # SSH into the server
       - name: SSH into the server
