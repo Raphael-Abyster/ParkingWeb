@@ -16,7 +16,7 @@ jobs:
       - name: Start SSH Agent
         run: |
           eval "$(ssh-agent -s)"
-          mkdir -p ~/.ssh
+          mkdir -p ~/.ssh/deploiUbuntu
           chmod 700 ~/.ssh
           ssh-keyscan 34.155.130.100 >> ~/.ssh/authorized_keys
           echo "${{ secrets.DEPLOY_KEY }}" > /home/raphael_de_castro/.ssh/deploiUbuntu
