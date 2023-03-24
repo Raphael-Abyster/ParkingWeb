@@ -11,12 +11,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: login
+      - name: Mise en place
         env: 
           ssh_key: ${{secrets.DEPLOY_KEY}}
         run: |
           mkdir ~/parkingweb/.ssh
           touch deploiUbuntu
           echo $ssh_key > deploiUbuntu
-
+      - name: Login
+        run: |
           ssh -i ~/parkingweb/.ssh/deploiUbuntu raphael_de_castro@34.155.130.100
