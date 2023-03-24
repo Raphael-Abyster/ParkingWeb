@@ -26,7 +26,7 @@ jobs:
     - uses: google-github-actions/setup-gcloud@94337306dda8180d967a56932ceb4ddcf01edae7
       with:
         service_account_key: ${{ secrets.DOCKER_PASSWORD }}
-        project_id: Charabia12*
+        project_id: 6745234368995740313
 
     # Configure Docker to use the gcloud command-line tool as a credential
     # helper for authentication
