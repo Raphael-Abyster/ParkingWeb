@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  PROJECT_ID: ${{ secrets.PROKECT_ID }}
+  PROJECT_ID: ${{ secrets.PROJECT_ID }}
   GKE_CLUSTER: ubuntuparkingwebtest    # Add your cluster name here.
   GKE_ZONE: europe-west9-a   # Add your cluster zone here.
   DEPLOYMENT_NAME: ParkingWeb # Add your deployment name here.
