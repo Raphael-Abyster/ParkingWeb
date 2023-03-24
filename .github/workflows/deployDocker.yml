@@ -24,4 +24,7 @@ jobs:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
       - name: SSH login
         run: |
-          ssh raphael_de_castro@34.155.130.100
+          ssh -i ${{ secrets.DEPLOY_KEY }} raphael_de_castro@34.155.130.100
+      - name: Validation
+        run: |
+          mkdir /raphael_de_castro/Validation.txt
